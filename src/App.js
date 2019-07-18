@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 class Main extends Component {
@@ -12,10 +13,40 @@ class Main extends Component {
     })
   }
 
-  handleClick = (event) => {
+  handleSubmit = (event) => {
     console.log(`productId is`, this.state.productId);
     event.preventDefault();
-    // this.getProductDetails();
+    this.getProductDetails();
+  }
+
+  getProductDetails = () => {
+    this.props.dispatch({ type: 'GET_DETAILS' })
+  }
+
+  createTable = () => {
+    if(this.props.reduxState.productDetails){
+      return(
+        <table>
+          <thead>
+            <tr>
+              <th>I.D.</th>
+              <th>Name</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{this.props.reduxState.productDetails.id}</td>
+              <td>{this.props.reduxState.productDetails.name}</td>
+              <td>{this.props.reduxState.productDetails.price}</td>
+            </tr>
+          </tbody>
+        </table>
+      )
+    }
+    else {
+      null
+    }
   }
 
   render() {
@@ -28,11 +59,12 @@ class Main extends Component {
         <form>
           <label htmlFor="product-id">Please enter a product id:</label>
           <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
-          <button onClick={this.handleClick}>Get Details</button>
+          <button onClick={this.handleSubmit}>Get Details</button>
         </form>
+        {this.createTable()}
       </div>
     );
   }
 }
 
-export default Main;
+export default connect()(Main);

@@ -21,8 +21,8 @@ mongoose.connection.on('error', () => {
 const Schema = mongoose.Schema;
 const productSchema = new Schema({
     productId: { type: Number, require: true },
-    productName: { type: String, require: true },
-    price: { type: Number, require: false }
+    price: { type: Number, require: false },
+    currencyCode: { type: String, require: true },
 });
 
 // creating a mongoose model
