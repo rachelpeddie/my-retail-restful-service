@@ -1,11 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import axios from 'axios';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Saga setup
+import createSagaMiddleware from 'redux-saga';
+import { takeEvery, put } from 'redux-saga/effects';
+const sagaMiddleware = createSagaMiddleware();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+/** -------- SAGAS -------- **/
+
+
+/** -------- REDUCERS -------- **/
+
+
+// create store for redux and middleware
+let storeInstance = createStore(
+    combineReducers({
+        productDetails
+    }),
+    applyMiddleware( sagaMiddleware, logger )
+);
+
+sagaMiddleware.run( waterSaga );
+
+ReactDOM.render(
+    <Provider store={storeInstance}><App /></Provider>,
+    document.getElementById('root')
+);
+
 serviceWorker.unregister();
