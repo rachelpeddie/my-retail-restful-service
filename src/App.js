@@ -31,6 +31,7 @@ class Main extends Component {
               <th>I.D.</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +39,7 @@ class Main extends Component {
               <td>{this.props.reduxState.productDetails.id}</td>
               <td>{this.props.reduxState.productDetails.name}</td>
               <td>{this.props.reduxState.productDetails.price}</td>
+              <td><button>Update Price</button></td>
             </tr>
           </tbody>
         </table>
