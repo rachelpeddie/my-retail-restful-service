@@ -49,15 +49,17 @@ class Main extends Component {
   render() {
     return (
       <div className="main-content">
-        {JSON.stringify(this.state)}
+        {/* {JSON.stringify(this.state)} */}
         <header>
-          <h1>My Retail RESTful Service App</h1>
+          <h1>myRetail Product Search</h1>
         </header>
-        <form>
-          <label htmlFor="product-id">Please enter a product id:</label>
-          <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
-          <button onClick={this.handleSubmit}>Get Details</button>
-        </form>
+        <div className="container">
+          <form>
+            <label htmlFor="product-id">Please enter a product id:</label>
+            <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
+            <button onClick={this.handleSubmit}>Get Details</button>
+          </form>
+        </div>
         {this.props.reduxState.productDetails === [''] ? this.createTable() : null}
       </div>
     );

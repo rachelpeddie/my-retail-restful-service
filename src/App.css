@@ -1,34 +1,71 @@
+:root {
+    --primary: #058B65;
+    --secondary: #034633;
+    --almostBlack: #414141;
+}
+
+body{
+    color: var(--almostBlack);
+    font-family: 'Poppins', sans-serif;
+}
+
 .main-content {
     display: block;
-    width: 40%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
+h1 {
+    font-size: 50px;
+    margin-top: 50px;
+    margin-bottom: 140px;
+    color: var(--primary)
+}
+
 input {
     display: block;
-    width: 30%;
-    height: 24px;
+    width: 40%;
+    height: 34px;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 8px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 
 label {
     display: block;
-    width: 30%;
+    width: 40%;
     height: 24px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    margin-bottom: 6px;
 }
-
 
 button {
     display: block;
-    width: 20%;
-    height: 30px;
-    margin-top: 10px;
+    width: 30%;
+    height: 40px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--secondary);
+    color: white;
+    font-size:  14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+th {
+    color: var(--primary)
+}
+
+td {
+    background-color: var(--secondary);
 }
