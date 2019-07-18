@@ -4,7 +4,7 @@ const pool = require('../modules/pool.js');
 const mongoose = require('mongoose');
 
 // connect to mongo using mongoose
-const databaseUrl = 'mongodb://localhost:27017/customRedskyPricing';
+const databaseUrl = 'mongodb://localhost:27017/custom-redsky-pricing';
 congoose.connect(databseUrl, { useNewUrlParser: true });
 
 // log when connected
