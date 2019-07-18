@@ -1,10 +1,10 @@
 :root {
     --primary: #058B65;
     --secondary: #034633;
-    --almostBlack: #414141;
+    --almostBlack: #313131;
 }
 
-body{
+body {
     color: var(--almostBlack);
     font-family: 'Poppins', sans-serif;
 }
@@ -20,7 +20,7 @@ body{
 h1 {
     font-size: 50px;
     margin-top: 50px;
-    margin-bottom: 140px;
+    margin-bottom: 120px;
     color: var(--primary)
 }
 
@@ -46,7 +46,7 @@ label {
     margin-bottom: 6px;
 }
 
-button {
+.details-button {
     display: block;
     width: 30%;
     height: 40px;
@@ -62,10 +62,32 @@ button {
     font-weight: 300;
 }
 
-th {
-    color: var(--primary)
+.update-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--secondary);
+    color: white;
+    font-size:  11px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
 }
 
-td {
-    background-color: var(--secondary);
+table {
+    margin-top: 100px;
+    width: 60%;
+    text-align: center;
+}
+
+th, td {
+    width: 25%;
+    padding: 4px;
+}
+
+th {
+    color: var(--primary);
 }

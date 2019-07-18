@@ -19,7 +19,7 @@ function* watcherSaga(){
 
 
 /** -------- REDUCERS -------- **/
-const productDetails = ( state = [''], action ) => {
+const productDetails = ( state = [{id: 14385, name: 'Rachel Movie', price: 12.00}], action ) => {
     return state;
 };
 

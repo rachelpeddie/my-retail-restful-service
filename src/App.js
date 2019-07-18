@@ -24,43 +24,44 @@ class Main extends Component {
   }
 
   createTable = () => {
-      return(
-        <table>
+    return (
+      <div className="table-container">
+        <table align="center">
           <thead>
             <tr>
               <th>I.D.</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{this.props.reduxState.productDetails.id}</td>
-              <td>{this.props.reduxState.productDetails.name}</td>
-              <td>{this.props.reduxState.productDetails.price}</td>
-              <td><button>Update Price</button></td>
+              <td>{this.props.reduxState.productDetails[0].id}</td>
+              <td>{this.props.reduxState.productDetails[0].name}</td>
+              <td>$ {this.props.reduxState.productDetails[0].price.toFixed(2)}</td>
+              <td><button className="update-button">Update Price</button></td>
             </tr>
           </tbody>
         </table>
-      )
+      </div>
+    )
   }
 
   render() {
     return (
-      <div className="main-content">
-        {/* {JSON.stringify(this.state)} */}
-        <header>
-          <h1>myRetail Product Search</h1>
-        </header>
-        <div className="container">
+      <div className="container">
+        <div className="main-content">
+          {/* {JSON.stringify(this.state)} */}
+          <header>
+            <h1>myRetail Product Search</h1>
+          </header>
           <form>
             <label htmlFor="product-id">Please enter a product id:</label>
             <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
-            <button onClick={this.handleSubmit}>Get Details</button>
+            <button onClick={this.handleSubmit} className="details-button">Get Details</button>
           </form>
         </div>
-        {this.props.reduxState.productDetails === [''] ? this.createTable() : null}
+        {this.props.reduxState.productDetails !== [''] ? this.createTable() : null}
       </div>
     );
   }
