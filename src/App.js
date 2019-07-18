@@ -24,7 +24,6 @@ class Main extends Component {
   }
 
   createTable = () => {
-    if(this.props.reduxState.productDetails){
       return(
         <table>
           <thead>
@@ -43,10 +42,6 @@ class Main extends Component {
           </tbody>
         </table>
       )
-    }
-    else {
-      null
-    }
   }
 
   render() {
@@ -61,10 +56,14 @@ class Main extends Component {
           <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
           <button onClick={this.handleSubmit}>Get Details</button>
         </form>
-        {this.createTable()}
+        {this.props.reduxState.productDetails === [''] ? this.createTable() : null}
       </div>
     );
   }
 }
 
-export default connect()(Main);
+const mapReduxStateToProps = reduxState => ({
+  reduxState,
+})
+
+export default connect(mapReduxStateToProps)(Main);
