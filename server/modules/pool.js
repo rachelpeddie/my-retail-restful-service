@@ -22,7 +22,7 @@ if (process.env.DATABASE_URL) {
     config = {
         host: 'localhost',
         port: 5432,
-        database: process.env.DATABASE_NAME || 'custom-redsky-pricing',
+        database: process.env.DATABASE_NAME || 'myRetail-details',
         max: 10,
         idleTimeoutMillis: 30000,
     };
