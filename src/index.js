@@ -15,8 +15,10 @@ const sagaMiddleware = createSagaMiddleware();
 /** -------- SAGAS -------- **/
 function* getProductDetails(action) {
   try {
-    const redskyResponse = yield axios.get(`/details/${action.payload}`)
-    console.log(`details are`, redskyResponse.data);
+    const redskyResponse = yield axios.get(`/details/name/${action.payload}`)
+    console.log(`name is`, redskyResponse.data);
+    const mongoResponse = yield axios.get(`/details/price/${action.payload}`)
+    console.log(`price is`, mongoResponse.data);
     
     // yield put({ type: 'SET_DETAILS', payload: { name: redskyResponse.data, price: mongoResponse.data } })
   }
