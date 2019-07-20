@@ -23,6 +23,17 @@ function* getProductDetails(action) {
   }
   catch (error) {
     console.log(`Couldn't get details from redsky`);
+    alert(`Sorry, couldn't get your product details.  Try again later.`)
+  }
+}
+
+function* updateProductPrice(action) {
+  try {
+    yield axios.put(`/details/price`, action.payload)
+  }
+  catch (error) {
+    console.log(`Error updating product price in database`, error);
+    alert(`Sorry, couldn't update your price. Try again later.`)
   }
 }
 
