@@ -13,30 +13,45 @@ import { takeEvery, put } from 'redux-saga/effects';
 const sagaMiddleware = createSagaMiddleware();
 
 /** -------- SAGAS -------- **/
-function* watcherSaga(){
+function* getProductDetails() {
+  try {
+    const redskyResponse = yield axios.get(`/details/${action.payload.id}`)
+    // yield put({type: 'SET_DETAILS', payload: redskyResponse.details})
+  }
+  catch (error) {
+    console.log(`Couldn't get details from redsky`);
+  }
+}
 
+function* watcherSaga() {
+  yield takeEvery('GET_DETAILS', getProductDetails);
 };
 
 
 /** -------- REDUCERS -------- **/
-const productDetails = ( state = [{id: 14385, name: 'Rachel Movie', price: 12.00}], action ) => {
-    return state;
+const productDetails = (state = [{ id: 14385, name: 'Rachel Movie', price: 12.00 }], action) => {
+  switch (action.type) {
+    case 'SET_DETAILS':
+      return action.payload;
+    default:
+      return state;
+  }
 };
 
 
 // create store for redux and middleware
 let storeInstance = createStore(
-    combineReducers({
-        productDetails
-    }),
-    applyMiddleware( sagaMiddleware, logger )
+  combineReducers({
+    productDetails
+  }),
+  applyMiddleware(sagaMiddleware, logger)
 );
 
-sagaMiddleware.run( watcherSaga );
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render(
-    <Provider store={storeInstance}><App /></Provider>,
-    document.getElementById('root')
+  <Provider store={storeInstance}><App /></Provider>,
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();

@@ -11,10 +11,10 @@ app.use(bodyParser.json());
 // set up for future deployment on Heroku
 app.use(bodyParser.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('build'));
+  app.use(express.static('build'));
 }
 else {
-    app.use(express.static('public'));
+  app.use(express.static('public'));
 }
 /** --------- DATABASE -------- **/
 
@@ -26,12 +26,12 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true });
 
 // log when connected
 mongoose.connection.once('connected', () => {
-    console.log(`mongoose connected to db: `, databaseUrl);
+  console.log(`mongoose connected to db: `, databaseUrl);
 });
 
 // log if error
 mongoose.connection.on('error', () => {
-    console.log(`error connecting mongoose to db: `, error);
+  console.log(`error connecting mongoose to db: `, error);
 });
 
 /** -------- EXPRESS ROUTES -------- **/
@@ -39,5 +39,5 @@ app.use('/details', detailsRouter);
 
 /** -------- START SERVER -------- **/
 app.listen(PORT, () => {
-    console.log(`listening on port: `, PORT);
+  console.log(`listening on port: `, PORT);
 });

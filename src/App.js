@@ -20,7 +20,7 @@ class Main extends Component {
   }
 
   getProductDetails = () => {
-    this.props.dispatch({ type: 'GET_DETAILS' })
+    this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.prodcutId })
   }
 
   createTable = () => {
