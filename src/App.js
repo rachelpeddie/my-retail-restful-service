@@ -50,7 +50,7 @@ class Main extends Component {
 
   updatePrice = () => {
     console.log(`new price`, this.state.price);
-    this.props.dispatch({ type: 'UPDATE_PRICE', payload: this.state.price });
+    this.props.dispatch({ type: 'UPDATE_PRICE', payload: {id: this.state.id, newPrice: this.state.price }});
     this.setState({
       editMode: false,
     })
