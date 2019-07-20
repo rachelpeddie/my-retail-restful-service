@@ -28,6 +28,7 @@ function* getProductDetails(action) {
 
 function* watcherSaga() {
   yield takeEvery('GET_DETAILS', getProductDetails);
+  yield takeEvery('UPDATE_PRICE', updateProductPrice)
 };
 
 

@@ -16,28 +16,43 @@ class Main extends Component {
     if (this.props.reduxState.productDetails !== prevProps.reduxState.productDetails) {
       this.setState({
         name: this.props.reduxState.productDetails.name,
-        price: this.props.reduxState.productDetails.price,
+        price: this.props.reduxState.productDetails.price.toFixed(2),
         currencyCode: this.props.reduxState.productDetails.currencyCode,
       })
     }
   }
 
   // sets id as typed for sending in dispatch
-  handleChangeId = (event) => {
+  handleChangeFor = (propertyName) => (event) => {
     this.setState({
-      id: event.target.value
+      [propertyName]: event.target.value
     })
   }
 
   handleSubmit = (event) => {
     console.log(`id is`, this.state.id);
     event.preventDefault();
-    this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.id })
+    this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.id });
+    this.setState({
+      id: this.state.id,
+      name: '',
+      price: '',
+      currencyCode: '',
+      editMode: false,
+    })
   }
 
   editMode = () => {
     this.setState({
-      editMode: !this.state.editMode,
+      editMode: true,
+    })
+  }
+
+  updatePrice = () => {
+    console.log(`new price`, this.state.price);
+    this.props.dispatch({ type: 'UPDATE_PRICE', payload: this.state.price });
+    this.setState({
+      editMode: false,
     })
   }
 
@@ -56,9 +71,10 @@ class Main extends Component {
             <tr>
               <td>{this.state.id}</td>
               <td>{this.state.name}</td>
-              {this.state.editMode === false ? <td>$ {this.state.price}</td> : <td>$ <input>{this.state.price}</input></td>}
-              
-              <td><button className="update-button" onClick={this.editMode}>{this.state.editMode === false ? 'Update Price' : 'Save Price'}</button></td>
+              {this.state.editMode === false ? <td>${this.state.price} {this.state.currencyCode}</td> : <td>$ <input onChange={this.handleChangeFor('price')} value={this.state.price} id="product-price" type='number' required /></td>}
+              {this.state.editMode === false ?
+              <td><button className="update-button" onClick={this.editMode}>Update Price</button></td> :
+              <td><button className="update-button" onClick={this.updatePrice}>Save Price</button></td>}
             </tr>
           </tbody>
         </table>
@@ -76,7 +92,7 @@ class Main extends Component {
           </header>
           <form>
             <label htmlFor="product-id">Please enter a product id:</label>
-            <input onChange={this.handleChangeId} placeholder="i.e. 44357291" value={this.state.id} id="product-id" type='number' required />
+            <input onChange={this.handleChangeFor('id')} placeholder="i.e. 44357291" value={this.state.id} id="product-id" type='number' required />
             <button onClick={this.handleSubmit} className="details-button">Get Details</button>
           </form>
         </div>
