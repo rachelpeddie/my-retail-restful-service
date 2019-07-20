@@ -2,9 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
-
 const detailsRouter = require('./routers/details.router.js');
-
 
 /** -------- MIDDLEWARE -------- **/
 app.use(bodyParser.json());
@@ -16,8 +14,8 @@ if (process.env.NODE_ENV === 'production') {
 else {
   app.use(express.static('public'));
 }
-/** --------- DATABASE -------- **/
 
+/** --------- DATABASE -------- **/
 const mongoose = require('mongoose');
 
 // connect to mongo using mongoose

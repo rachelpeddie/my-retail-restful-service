@@ -12,14 +12,14 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 const sagaMiddleware = createSagaMiddleware();
 
-
 /** -------- SAGAS -------- **/
+// sends http request to redsky for name, sends http request to database for price, combines both into single object to send back to set reducer for client
 function* getProductDetails(action) {
   try {
     const redskyResponse = yield axios.get(`/details/name/${action.payload}`)
     const mongoResponse = yield axios.get(`/details/price/${action.payload}`)
     console.log(`price is`, mongoResponse.data);
-    yield put({ type: 'SET_DETAILS', payload: { name: redskyResponse.data, price: mongoResponse.data[0].price, currencyCode: mongoResponse.data[0].currencyCode  } })
+    yield put({ type: 'SET_DETAILS', payload: { id: mongoResponse.data[0].productId, name: redskyResponse.data, price: mongoResponse.data[0].price, currencyCode: mongoResponse.data[0].currencyCode  } })
   }
   catch (error) {
     console.log(`Couldn't get details from redsky`);
@@ -27,6 +27,7 @@ function* getProductDetails(action) {
   }
 }
 
+// sends http request to update price in database using product id
 function* updateProductPrice(action) {
   try {
     yield axios.put(`/details/price`, action.payload)
@@ -37,13 +38,14 @@ function* updateProductPrice(action) {
   }
 }
 
+// watcheds for actions to trigger generator functions
 function* watcherSaga() {
   yield takeEvery('GET_DETAILS', getProductDetails);
   yield takeEvery('UPDATE_PRICE', updateProductPrice)
 };
 
-
 /** -------- REDUCERS -------- **/
+// reducer to hold all product details for access on client side
 const productDetails = (state = {}, action) => {
   switch (action.type) {
     case 'SET_DETAILS':
@@ -52,7 +54,6 @@ const productDetails = (state = {}, action) => {
       return state;
   }
 };
-
 
 // create store for redux and middleware
 let storeInstance = createStore(

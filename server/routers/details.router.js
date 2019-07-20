@@ -4,13 +4,11 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 const mongoose = require('mongoose');
 
-
 // function to remove TM symbols -- ideally with more time, would account for all character codes and display these properly with the name of the product
 function removeTM(title) {
   var titleArray = title.split("&#")
   return titleArray[0];
 }
-
 
 // get request to external redsky route to retrieve prodcut name and original pricing info
 router.get('/name/:id', (req, res) => {
