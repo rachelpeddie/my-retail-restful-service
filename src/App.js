@@ -4,23 +4,31 @@ import './App.css';
 
 class Main extends Component {
   state = {
-    productId: '',
+    id: '',
+    name: '',
+    price: '',
   }
 
+  // check for updated redux state
+  componentDidUpdate(prevProps) {
+    if (this.props.reduxState.productDetails !== prevProps.reduxState.productDetails) {
+      this.setState({
+        details: this.props.reduxState.productDetails,
+      })
+    }
+  }
+
+  // sets id as typed for sending in dispatch
   handleChange = (event) => {
     this.setState({
-      productId: event.target.value
+      id: event.target.value
     })
   }
 
   handleSubmit = (event) => {
-    console.log(`productId is`, this.state.productId);
+    console.log(`id is`, this.state.id);
     event.preventDefault();
-    this.getProductDetails(this.state.productId);
-  }
-
-  getProductDetails = (id) => {
-    this.props.dispatch({ type: 'GET_DETAILS', payload: id })
+    this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.id })
   }
 
   createTable = () => {
@@ -36,9 +44,9 @@ class Main extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>{this.props.reduxState.productDetails[0].id}</td>
-              <td>{this.props.reduxState.productDetails[0].name}</td>
-              <td>$ {this.props.reduxState.productDetails[0].price.toFixed(2)}</td>
+              <td>{this.state.id}</td>
+              <td>{this.state.name}</td>
+              <td>$ {this.state.price}</td>
               <td><button className="update-button">Update Price</button></td>
             </tr>
           </tbody>
@@ -57,11 +65,11 @@ class Main extends Component {
           </header>
           <form>
             <label htmlFor="product-id">Please enter a product id:</label>
-            <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.productId} id="product-id" type='number' required />
+            <input onChange={this.handleChange} placeholder="i.e. 44357291" value={this.state.id} id="product-id" type='number' required />
             <button onClick={this.handleSubmit} className="details-button">Get Details</button>
           </form>
         </div>
-        {this.props.reduxState.productDetails !== [''] ? this.createTable() : null}
+        {this.state.name !== '' || this.state.price !== '' ? this.createTable() : null }
       </div>
     );
   }

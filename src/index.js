@@ -16,7 +16,9 @@ const sagaMiddleware = createSagaMiddleware();
 function* getProductDetails(action) {
   try {
     const redskyResponse = yield axios.get(`/details/${action.payload}`)
-    // yield put({type: 'SET_DETAILS', payload: redskyResponse.details})
+    console.log(`details are`, redskyResponse.data);
+    
+    // yield put({ type: 'SET_DETAILS', payload: { name: redskyResponse.data, price: mongoResponse.data } })
   }
   catch (error) {
     console.log(`Couldn't get details from redsky`);
@@ -29,7 +31,7 @@ function* watcherSaga() {
 
 
 /** -------- REDUCERS -------- **/
-const productDetails = (state = [{ id: 14385, name: 'Rachel Movie', price: 12.00 }], action) => {
+const productDetails = (state = {}, action) => {
   switch (action.type) {
     case 'SET_DETAILS':
       return action.payload;
