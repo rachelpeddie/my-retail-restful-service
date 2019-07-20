@@ -37,31 +37,31 @@ const productSchema = new Schema({
 const Product = mongoose.model('Product', productSchema);
 
 // getting price from db for product by product id
-router.get( '/price/:id', (req, res) => {
+router.get('/price/:id', (req, res) => {
   const id = req.params.id;
-  Product.find({productId: id}).sort('_id')
-  .then( response => {
-    console.log(`response price is`, response);
-    res.send(response);    
-  }).catch( error => {
-    console.log(`error getting price from mongodb`, error);
-    res.sendStatus(500);
-  })
+  Product.find({ productId: id }).sort('_id')
+    .then(response => {
+      console.log(`response price is`, response);
+      res.send(response);
+    }).catch(error => {
+      console.log(`error getting price from mongodb`, error);
+      res.sendStatus(500);
+    })
 })
 
 // updating product price in db
 router.put(`/price`, (req, res) => {
   const id = req.body.id;
   const newPrice = req.body.newPrice;
-  Product.findOneAndUpdate({ productId: id}, {$set: {price: newPrice}})
-  .then( response => {
-    console.log(`product price was updated, woo!`);
-    res.sendStatus(201);
-  })
-  .catch( error =>{
-    console.log(`error updating your product price in db`, error);
-    res.sendStatus(500);
-  })
+  Product.findOneAndUpdate({ productId: id }, { $set: { price: newPrice } })
+    .then(response => {
+      console.log(`product price was updated, woo!`);
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log(`error updating your product price in db`, error);
+      res.sendStatus(500);
+    })
 })
 
 module.exports = router;

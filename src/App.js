@@ -31,6 +31,7 @@ class Main extends Component {
     })
   }
 
+  // sends current state id to saga to use for retrieving product info, resets state values to original state
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.id });
@@ -53,7 +54,7 @@ class Main extends Component {
 
   // sends new price to saga with id to update in database, sets edit mode to false to render static price element
   updatePrice = () => {
-    this.props.dispatch({ type: 'UPDATE_PRICE', payload: {id: this.state.productId, newPrice: this.state.price }});
+    this.props.dispatch({ type: 'UPDATE_PRICE', payload: { id: this.state.productId, newPrice: this.state.price } });
     this.setState({
       editMode: false,
     })
@@ -77,8 +78,8 @@ class Main extends Component {
               <td>{this.state.name}</td>
               {this.state.editMode === false ? <td>${this.state.price} {this.state.currencyCode}</td> : <td>$ <input onChange={this.handleChangeFor('price')} value={this.state.price} id="product-price" type='number' required /></td>}
               {this.state.editMode === false ?
-              <td><button className="update-button" onClick={this.editMode}>Update Price</button></td> :
-              <td><button className="update-button" onClick={this.updatePrice}>Save Price</button></td>}
+                <td><button className="update-button" onClick={this.editMode}>Update Price</button></td> :
+                <td><button className="update-button" onClick={this.updatePrice}>Save Price</button></td>}
             </tr>
           </tbody>
         </table>
@@ -99,7 +100,7 @@ class Main extends Component {
             <button onClick={this.handleSubmit} className="details-button">Get Details</button>
           </form>
         </div>
-        {this.state.name !== '' || this.state.price !== '' ? this.createTable() : null }
+        {this.state.name !== '' || this.state.price !== '' ? this.createTable() : null}
       </div>
     );
   }

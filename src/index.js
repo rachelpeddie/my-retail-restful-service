@@ -19,7 +19,7 @@ function* getProductDetails(action) {
     const redskyResponse = yield axios.get(`/details/name/${action.payload}`)
     const mongoResponse = yield axios.get(`/details/price/${action.payload}`)
     console.log(`price is`, mongoResponse.data);
-    yield put({ type: 'SET_DETAILS', payload: { id: mongoResponse.data[0].productId, name: redskyResponse.data, price: mongoResponse.data[0].price, currencyCode: mongoResponse.data[0].currencyCode  } })
+    yield put({ type: 'SET_DETAILS', payload: { id: mongoResponse.data[0].productId, name: redskyResponse.data, price: mongoResponse.data[0].price, currencyCode: mongoResponse.data[0].currencyCode } })
   }
   catch (error) {
     console.log(`Couldn't get details from redsky`);
