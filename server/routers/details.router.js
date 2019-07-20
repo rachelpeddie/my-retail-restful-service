@@ -4,12 +4,20 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 const mongoose = require('mongoose');
 
+
+// function to remove TM symbols -- ideally with more time, would account for all character codes and display these properly with the name of the product
+function removeTM(title) {
+  var titleArray = title.split("&#")
+  return titleArray[0];
+}
+
+
 // get request to external redsky route to retrieve prodcut name and original pricing info
 router.get('/name/:id', (req, res) => {
   const id = req.params.id;
   axios.get(`https://redsky.target.com/v2/pdp/tcin/${id}?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics`)
     .then(response => {
-      let name = response.data.product.item.product_description.title;
+      let name = removeTM(response.data.product.item.product_description.title);
       console.log(`response name are`, name);
       res.send(name);
     })
@@ -35,9 +43,8 @@ router.get( '/price/:id', (req, res) => {
   const id = req.params.id;
   Product.find({productId: id}).sort('_id')
   .then( response => {
-    let price = response.data;
-    console.log(`response price is`, price);
-    res.send(price);    
+    console.log(`response price is`, response);
+    res.send(response);    
   }).catch( error => {
     console.log(`error getting price from mongodb`, error);
     res.sendStatus(500);
