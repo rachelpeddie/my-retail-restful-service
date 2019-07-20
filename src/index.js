@@ -13,9 +13,9 @@ import { takeEvery, put } from 'redux-saga/effects';
 const sagaMiddleware = createSagaMiddleware();
 
 /** -------- SAGAS -------- **/
-function* getProductDetails() {
+function* getProductDetails(action) {
   try {
-    const redskyResponse = yield axios.get(`/details/${action.payload.id}`)
+    const redskyResponse = yield axios.get(`/details/${action.payload}`)
     // yield put({type: 'SET_DETAILS', payload: redskyResponse.details})
   }
   catch (error) {

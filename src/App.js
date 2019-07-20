@@ -16,11 +16,11 @@ class Main extends Component {
   handleSubmit = (event) => {
     console.log(`productId is`, this.state.productId);
     event.preventDefault();
-    this.getProductDetails();
+    this.getProductDetails(this.state.productId);
   }
 
-  getProductDetails = () => {
-    this.props.dispatch({ type: 'GET_DETAILS', payload: this.state.prodcutId })
+  getProductDetails = (id) => {
+    this.props.dispatch({ type: 'GET_DETAILS', payload: id })
   }
 
   createTable = () => {
