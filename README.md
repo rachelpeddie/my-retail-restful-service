@@ -1,7 +1,7 @@
 # myRetail Product Search
 This application allows a user to search for a product's name and price from the 8-digit product ID.  The information is pulled from the Target RedSky API as well as a NoSQL data store. [HEROKU LINK]
 
-## Built With
+### Built With
 + JavaScript
 + React
 + Redux
@@ -36,9 +36,7 @@ Steps to get the development environment running.
 #### Search Results
 ![myRetail Product Search Results](./img/myRetail-search-results.png "Search Results")
 
------------------------
-
-## Test Data
+### Test Data
 This project was created as a Proof-Of-Concept and therefore is only storing price data for 7 products.  Copy and paste the following into the Studio 3T IntelliShell window and execute, then use these product IDs to perform searches from the website.
 > db.products.insertOne({productId: 13860429, price: 10.00, currenyCode: 'USD'})
 > db.products.insertOne({productId: 13860431, price: 6.00, currenyCode: 'USD'})
