@@ -17,11 +17,15 @@ else {
 
 /** --------- DATABASE -------- **/
 const mongoose = require('mongoose');
-
-// connect to mongo using mongoose
+let uri = 'mongodb://heroku_sr39k54r:94pe796ss7pf65ahmv0d78ue9h@ds161183.mlab.com:61183/heroku_sr39k54r';
 const databaseUrl = 'mongodb://localhost:27017/myRetail-details';
-mongoose.connect(databaseUrl, { useNewUrlParser: true });
-
+// connect to mongo using mongoose
+if (process.env.NODE_ENV === 'production') {
+  mongoose.connect(uri, { useNewUrlParser: true });
+}
+else {
+  mongoose.connect(databaseUrl, { useNewUrlParser: true });
+}
 // log when connected
 mongoose.connection.once('connected', () => {
   console.log(`mongoose connected to db: `, databaseUrl);
