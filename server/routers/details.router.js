@@ -16,7 +16,7 @@ router.get('/name/:id', (req, res) => {
   axios.get(`https://redsky.target.com/v2/pdp/tcin/${id}?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics`)
     .then(response => {
       let name = removeTM(response.data.product.item.product_description.title);
-      console.log(`response name are`, name);
+      console.log(`response name is`, name);
       res.send(name);
     })
     .catch(error => {
