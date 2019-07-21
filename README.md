@@ -1,68 +1,64 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# myRetail Product Search
+-----------------------
+This application allows a user to search for a product's name and price from the 8-digit product ID.  The information is pulled from the Target RedSky API as well as a NoSQL data store. [HEROKU LINK]
 
-## Available Scripts
 
-In the project directory, you can run:
+## Built With
+> JavaScript
+> React
+> Redux
+> axios
+> Node.js
+> Express
+> Mongoose
 
-### `npm start`
+### Getting Started
+-----------------------
+Get the application up and running locally.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
+These downloads are required before starting the application.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+> [ Node.js ] (https://nodejs.org/en/)
+> [ MongoDB ] (https://docs.mongodb.com/)
+> [ Studio 3T ] (https://studio3t.com/download/)
 
-### `npm test`
+### Installing
+Steps to get the development environment running.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Download this project.
+2. Open Studio 3T and create connection at port 27017
+3. npm install
+4. npm run client
+5. mongod
+6. npm run server
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Site Views
+-----------------------
+#### Home Page
+![myRetail Product Search Home Page](https://share.getcloudapp.com/eDuYmDY5 "Home Page")
+#### Search Results
+![myRetail Product Search Results](https://share.getcloudapp.com/4guzkE5x "Search Results")
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Test Data
+-----------------------
+This project was created as a Proof-Of-Concept and therefore is only storing price data for 7 products.  Copy and paste the following into the Studio 3T IntelliShell window and execute, then use these product IDs to perform searches from the website.
+> db.products.insertOne({productId: 13860429, price: 10.00, currenyCode: 'USD'})
+> db.products.insertOne({productId: 13860431, price: 6.00, currenyCode: 'USD'})
+> db.products.insertOne({productId: 53871305, price: 14.99, currenyCode: 'USD'})
+> db.products.insertOne({productId: 14778667, price: 23.99, currenyCode: 'USD'})
+> db.products.insertOne({productId: 53453712, price: 34.99, currenyCode: 'USD'})
+> db.products.insertOne({productId: 53187753, price: 2.99, currenyCode: 'USD'})
+> db.products.insertOne({productId: 53439166, price: 59.99, currenyCode: 'USD'})
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Next Steps
+-----------------------
+Features to be added in continued developement:
+> + [ ] If a product exists in RedSky, check for existing database entry for search results. If no entry exists, prompt user to enter price and currency code to add this product information to the database for future searches
+> + [ ] Display an image that corresponds to the product ID in the search results
+> + [ ] Search for the products by name as well as ID.
+> + [ ] Display the results from the last 5 searches in addition to the most recent search to allow the user to see previous search results
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Authors
+Rachel Peddie
