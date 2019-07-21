@@ -4,13 +4,13 @@ This application allows a user to search for a product's name and price from the
 
 
 ## Built With
-> JavaScript
-> React
-> Redux
-> axios
-> Node.js
-> Express
-> Mongoose
+> + JavaScript
+> + React
+> + Redux
+> + axios
+> + Node.js
+> + Express
+> + Mongoose
 
 ### Getting Started
 -----------------------
@@ -19,9 +19,9 @@ Get the application up and running locally.
 ### Prerequisites
 These downloads are required before starting the application.
 
-> [ Node.js ] (https://nodejs.org/en/)
-> [ MongoDB ] (https://docs.mongodb.com/)
-> [ Studio 3T ] (https://studio3t.com/download/)
+> + [ Node.js ] (https://nodejs.org/en/)
+> + [ MongoDB ] (https://docs.mongodb.com/)
+> + [ Studio 3T ] (https://studio3t.com/download/)
 
 ### Installing
 Steps to get the development environment running.
@@ -37,9 +37,9 @@ Steps to get the development environment running.
 ## Site Views
 -----------------------
 #### Home Page
-![myRetail Product Search Home Page](https://share.getcloudapp.com/eDuYmDY5 "Home Page")
+![myRetail Product Search Home Page](./img/myRetail-home-page.png "Home Page")
 #### Search Results
-![myRetail Product Search Results](https://share.getcloudapp.com/4guzkE5x "Search Results")
+![myRetail Product Search Results](./img/myRetail-search-results.png "Search Results")
 
 ### Test Data
 -----------------------
@@ -55,10 +55,10 @@ This project was created as a Proof-Of-Concept and therefore is only storing pri
 ### Next Steps
 -----------------------
 Features to be added in continued developement:
-> + [ ] If a product exists in RedSky, check for existing database entry for search results. If no entry exists, prompt user to enter price and currency code to add this product information to the database for future searches
-> + [ ] Display an image that corresponds to the product ID in the search results
-> + [ ] Search for the products by name as well as ID.
-> + [ ] Display the results from the last 5 searches in addition to the most recent search to allow the user to see previous search results
++ [ ] If a product exists in RedSky, check for existing database entry for search results. If no entry exists, prompt user to enter price and currency code to add this product information to the database for future searches
++ [ ] Display an image that corresponds to the product ID in the search results
++ [ ] Search for the products by name as well as ID.
++ [ ] Display the results from the last 5 searches in addition to the most recent search to allow the user to see previous search results
 
 ## Authors
 Rachel Peddie
