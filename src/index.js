@@ -18,11 +18,9 @@ function* getProductDetails(action) {
   try {
     const redskyResponse = yield axios.get(`/details/name/${action.payload}`)
     const mongoResponse = yield axios.get(`/details/price/${action.payload}`)
-    console.log(`price is`, mongoResponse.data);
     yield put({ type: 'SET_DETAILS', payload: { id: mongoResponse.data[0].productId, name: redskyResponse.data, price: mongoResponse.data[0].price, currencyCode: mongoResponse.data[0].currencyCode } })
   }
   catch (error) {
-    console.log(`Couldn't get details from redsky`);
     alert(`Sorry, couldn't get your product details.  Try again later.`)
   }
 }
@@ -33,7 +31,6 @@ function* updateProductPrice(action) {
     yield axios.put(`/details/price`, action.payload)
   }
   catch (error) {
-    console.log(`Error updating product price in database`, error);
     alert(`Sorry, couldn't update your price. Try again later.`)
   }
 }
@@ -60,7 +57,10 @@ let storeInstance = createStore(
   combineReducers({
     productDetails
   }),
-  applyMiddleware(sagaMiddleware, logger)
+    applyMiddleware(
+      sagaMiddleware, 
+      logger
+  ),
 );
 
 sagaMiddleware.run(watcherSaga);
