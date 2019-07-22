@@ -21,7 +21,7 @@ let uri = 'mongodb://heroku_sr39k54r:94pe796ss7pf65ahmv0d78ue9h@ds161183.mlab.co
 const databaseUrl = 'mongodb://localhost:27017/myRetail-details';
 // connect to mongo using mongoose
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect(uri);
+  mongoose.connect(uri), { useFindAndModify: false };
 }
 else {
   mongoose.connect(databaseUrl, { useNewUrlParser: true });
@@ -43,3 +43,5 @@ app.use('/details', detailsRouter);
 app.listen(PORT, () => {
   console.log(`listening on port: `, PORT);
 });
+
+module.exports = app;

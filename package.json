@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4",
+    "jest": "^24.7.1",
     "mongoose": "^5.3.14",
     "pg": "^7.9.0",
     "react": "^16.8.6",
@@ -16,7 +17,8 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
@@ -26,7 +28,7 @@
     "client": "react-scripts start",
     "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=node --forceExit",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
