@@ -46,11 +46,17 @@ This project was created as a Proof-Of-Concept and therefore is only storing pri
 > db.products.insertOne({productId: 53187753, price: 2.99, currenyCode: 'USD'})
 > db.products.insertOne({productId: 53439166, price: 59.99, currenyCode: 'USD'})
 
+### Run Tests
+1. Make sure port 5000 is available (stop server if running)
+2. mongod
+3. npm run test
+
+
 ## Next Steps
 Features to be added in continued developement:
 + [ ] If a product exists in RedSky, check for existing database entry for search results. If no entry exists, prompt user to enter price and currency code to add this product information to the database for future searches
 + [ ] Display an image that corresponds to the product ID in the search results
-+ [ ] Search for the products by name as well as ID.
++ [ ] Search for the products by name as well as ID
 + [ ] Display the results from the last 5 searches in addition to the most recent search to allow the user to see previous search results
 
 ### Authors
