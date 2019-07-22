@@ -1,5 +1,5 @@
 # myRetail Product Search
-This application allows a user to search for a product's name and price from the 8-digit product ID.  The information is pulled from the Target RedSky API as well as a NoSQL data store.  View deployed application: [myRetail Product Search](https://infinite-hollows-17061.herokuapp.com/)
+This application allows a user to search for a product's name and price from the 8-digit product ID.  The information is pulled from the Target RedSky API as well as a NoSQL data store.  View deployed application: [myRetail Product Search](https://myretail-product-search.herokuapp.com/)
 
 ### Built With
 + JavaScript
