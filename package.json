@@ -5,7 +5,7 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.16.4",
     "jest": "^24.7.1",
     "mongoose": "^5.3.14",
